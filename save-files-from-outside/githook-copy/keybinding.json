@@ -1,0 +1,19 @@
+// Place your key bindings in this file to override the defaults
+[
+  // https://code.visualstudio.com/updates/v1_39#_open-new-terminals-with-custom-working-directories
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.terminal.newWithCwd",
+    "args": {
+      "cwd": "${fileDirname}"
+    }
+  },
+  // JR https://stackoverflow.com/questions/55668151/how-to-change-the-terminal-to-the-current-directory-in-visual-studio-code-hot
+  {
+    "key": "alt+t",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "cd '${fileDirname}'\n"
+    }
+  },
+]
