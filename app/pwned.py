@@ -32,9 +32,14 @@ def lookup_pwned_api(pwd):
     if not res.ok:
         raise RuntimeError('Error fetching "{}": {}'.format(
             url, res.status_code))
-    hashes = (line.split(':') for line in res.text.splitlines())
-    count = next((int(count) for t, count in hashes if t == tail), 0)
+    count = count_occurrences(res.text, tail)
     return sha1pwd, count
+
+
+def count_occurrences(text, tail):          # JR changed count to counted and cnt so I can see what's going on for sure - didn't need to
+    hashes = (line.split(':') for line in text.splitlines())
+    counted = next((int(cnt) for t, cnt in hashes if t == tail), 0)
+    return counted
 
 
 def main(args):
