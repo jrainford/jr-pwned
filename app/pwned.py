@@ -27,7 +27,9 @@ def lookup_pwned_api(pwd):
     """
     sha1pwd = hashlib.sha1(pwd.encode('utf-8')).hexdigest().upper()
     head, tail = sha1pwd[:5], sha1pwd[5:]
+    print(f"Checking password: {pwd} {head}")
     url = 'https://api.pwnedpasswords.com/range/' + head
+    print(f"URL: {url}")
     res = requests.get(url)
     if not res.ok:
         raise RuntimeError('Error fetching "{}": {}'.format(
