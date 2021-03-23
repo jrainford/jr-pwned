@@ -38,9 +38,19 @@ def lookup_pwned_api(pwd):
 
 
 def main(args):
+    print(__file__)
+    print(f"Arguments count: {len(sys.argv)}")
+    for i, arg in enumerate(sys.argv):
+        # JR greater than 6 is just spacing of print output
+        print(f"Argument {i:>6}: {arg}")
+
     ec = 0
     for pwd in args or sys.stdin:
         pwd = pwd.strip()
+        if pwd == "":
+            pwd = "farside111"
+            print(f"using {pwd} as default for testing")
+
         try:
             sha1pwd, count = lookup_pwned_api(pwd)
         except UnicodeError:
