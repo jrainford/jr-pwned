@@ -33,15 +33,11 @@ def lookup_pwned_api(pwd):
         raise RuntimeError('Error fetching "{}": {}'.format(
             url, res.status_code))
     hashes = (line.split(':') for line in res.text.splitlines())
-    print("here")
-    for t, count in hashes:
-        print(t, count)
     count = next((int(count) for t, count in hashes if t == tail), 0)
     return sha1pwd, count
 
 
 def main(args):
-    print(__file__)
     ec = 0
     for pwd in args or sys.stdin:
         pwd = pwd.strip()
