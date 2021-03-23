@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 import hashlib
 import sys
+import inspect
 
 try:
     import requests
 except ModuleNotFoundError:
     print("###  pip install requests  ###")
     raise
+
+def print_function_name():
+    print("-->", inspect.stack()[1][3])
 
 
 def lookup_pwned_api(pwd):
@@ -42,6 +46,8 @@ def lookup_pwned_api(pwd):
 
 
 def count_occurrences(text, tail):
+    print_function_name()
+
     hashes = (line.split(':') for line in text.splitlines())
     
     count = next((int(count) for t, count in hashes if t == tail), 0)
@@ -49,7 +55,9 @@ def count_occurrences(text, tail):
     return count
 
 
+
 def count_occurrences_2(text, tail):
+    print_function_name()
 
     lines = text.splitlines()
     hashes = []         # JR start with empty list
@@ -78,7 +86,8 @@ def count_occurrences_3(text, tail):
 
 # JR change to for loops etc as an exercise to understand the two original lines of code
 def count_occurrences_jr(text, tail):
-    
+    print_function_name()
+
     lines = text.splitlines()
     
     hashes = []
