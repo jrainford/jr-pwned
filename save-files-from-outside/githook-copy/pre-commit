@@ -5,6 +5,7 @@
 #ls -l
 
 # echo "Saving symlinked files..."
+date >>jr-timestamp-pre-commit.log
 echo "Saving files from outside this directory ..."
 # (set -x; cp .vscode/jr-keybinding.json saved-symlinked-files/)
 # (set -x; cp .vscode/jr-keybinding.json saved-symlinked-files/)

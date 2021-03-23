@@ -34,14 +34,50 @@ def lookup_pwned_api(pwd):
     if not res.ok:
         raise RuntimeError('Error fetching "{}": {}'.format(
             url, res.status_code))
-    count = count_occurrences(res.text, tail)
+    # count = count_occurrences(res.text, tail)
+    # count = count_occurrences_2(res.text, tail)
+    count = count_occurrences_jr(res.text, tail)
     return sha1pwd, count
 
 
-def count_occurrences(text, tail):          # JR changed count to counted and cnt so I can see what's going on for sure - didn't need to
+def count_occurrences(text, tail):
     hashes = (line.split(':') for line in text.splitlines())
-    counted = next((int(cnt) for t, cnt in hashes if t == tail), 0)
-    return counted
+    
+    count = next((int(count) for t, count in hashes if t == tail), 0)
+
+    return count
+
+
+def count_occurrences_2(text, tail):
+
+    lines = text.splitlines()
+    hashes = []         # JR start with empty list
+    for line in lines:
+        hashes.append(line.split(':'))
+
+    jr_list_generator = (int(count) for t, count in hashes if t == tail)
+    count = next(jr_list_generator, 0)
+
+    return count
+
+
+# JR change to for loops etc as an exercise to understand the two original lines of code
+def count_occurrences_jr(text, tail):
+    
+    lines = text.splitlines()
+    
+    hashes = []
+    for line in lines:
+        hashes.append(line.split(':'))
+
+    count = 0
+    for hash in hashes:
+        (t, c) = hash
+        if t == tail:
+            print("Match:", t, tail, c)
+            count = c
+    return count
+
 
 
 def main(args):
