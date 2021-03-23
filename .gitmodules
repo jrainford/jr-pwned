@@ -1,0 +1,3 @@
+[submodule "pwned-search"]
+	path = pwned-search
+	url = git@github.com:mikepound/pwned-search.git
