@@ -36,7 +36,8 @@ def lookup_pwned_api(pwd):
             url, res.status_code))
     # count = count_occurrences(res.text, tail)
     # count = count_occurrences_2(res.text, tail)
-    count = count_occurrences_jr(res.text, tail)
+    count = count_occurrences_3(res.text, tail)
+    # count = count_occurrences_jr(res.text, tail)
     return sha1pwd, count
 
 
@@ -57,6 +58,20 @@ def count_occurrences_2(text, tail):
 
     jr_list_generator = (int(count) for t, count in hashes if t == tail)
     count = next(jr_list_generator, 0)
+
+    return count
+
+
+def count_occurrences_3(text, tail):
+    print_function_name()
+    hashes_generator = (line.split(':') for line in text.splitlines())
+    hashes = list(hashes_generator)
+
+    print(f"matching tails count: {len(hashes)}")
+
+    matches_generator = (count for t, count in hashes if t == tail)
+    # only expecting one result, so only one call to next()
+    count = next(matches_generator, 0)
 
     return count
 
