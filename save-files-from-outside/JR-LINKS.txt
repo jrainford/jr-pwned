@@ -1,0 +1,5 @@
+
+create soft links to keybindings etc in softlinks directory
+softlink also to .git/hooks/pre-commit
+
+githook-copy directory is what my pre-commit hook copies to 
