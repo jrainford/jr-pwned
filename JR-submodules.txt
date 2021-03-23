@@ -1,0 +1,15 @@
+
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+
+Add a submodule to existing repo
+    git submodule add git@github.com:mikepound/pwned-search.git
+    git commit -am 'Add pwned submodule'
+    git push
+
+
+Checkout repo that contains submodules
+    git clone git@github.com:jrainford/jr-pwned.git
+    git submodule update --init --recursive
+
+
