@@ -3,3 +3,8 @@ create soft links to keybindings etc in softlinks directory
 softlink also to .git/hooks/pre-commit
 
 githook-copy directory is what my pre-commit hook copies to 
+
+if clone again from github, recreate pre-commit hook with
+
+    cp save-files-from-outside/githook-copy/pre-commit save-files-from-outside/softlinks/pre-commit
+    cat .git/hooks/pre-commit
