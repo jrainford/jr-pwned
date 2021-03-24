@@ -64,8 +64,8 @@ def count_occurrences_2(text, tail):
     for line in lines:
         hashes.append(line.split(':'))
 
-    jr_list_generator = (int(count) for t, count in hashes if t == tail)
-    count = next(jr_list_generator, 0)
+    matches_generator = (int(count) for t, count in hashes if t == tail)
+    count = next(matches_generator, 0)
 
     return count
 
