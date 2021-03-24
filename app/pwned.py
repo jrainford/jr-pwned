@@ -42,7 +42,7 @@ def lookup_pwned_api(pwd):
     # count = count_occurrences_2(res.text, tail)
     # count = count_occurrences_3(res.text, tail)
     count = count_occurrences_4(res.text, tail)
-    # count = count_occurrences_jr(res.text, tail)
+    # count = count_occurrences_5(res.text, tail)
     return sha1pwd, count
 
 
@@ -100,7 +100,7 @@ def count_occurrences_4(text, tail):
 
 
 # JR change to for loops etc as an exercise to understand the two original lines of code
-def count_occurrences_jr(text, tail):
+def count_occurrences_5(text, tail):
     print_function_name()
 
     lines = text.splitlines()
