@@ -1,14 +1,1 @@
-#!/bin/bash
-#echo Running $BASH_SOURCE
-#set | egrep GIT
-#echo PWD is $PWD
-#ls -l
-
-# echo "Saving symlinked files..."
-date >>jr-timestamp-pre-commit.log
-echo "Saving files from outside this directory ..."
-# (set -x; cp .vscode/jr-keybinding.json saved-symlinked-files/)
-# (set -x; cp .vscode/jr-keybinding.json saved-symlinked-files/)
-# (set -x; cp "/Users/johnrainford/Library/Application Support/Code - Insiders/User/keybindings.json" $(PWD)/save-files-from-outside/.)
-(set -x; cp "$(PWD)/save-files-from-outside/softlinks/"* $(PWD)/save-files-from-outside/githook-copy/.)
-#set |grep GIT
+../../.git/hooks/pre-commit
