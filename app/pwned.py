@@ -39,16 +39,16 @@ def lookup_pwned_api(pwd):
     if not res.ok:
         raise RuntimeError('Error fetching "{}": {}'.format(
             url, res.status_code))
-    # count = count_occurrences(res.text, tail)
-    # count = count_occurrences_2(res.text, tail)
-    # count = count_occurrences_3(res.text, tail)
-    # count = count_occurrences_4(res.text, tail)
-    # count = count_occurrences_5(res.text, tail)
-    count = count_occurrences_6(res.text, tail)
+    # count = occurences_count(res.text, tail)
+    # count = occurences_count_2(res.text, tail)
+    # count = occurences_count_3(res.text, tail)
+    # count = occurences_count_4(res.text, tail)
+    # count = occurences_count_5(res.text, tail)
+    count = occurences_count_6(res.text, tail)
     return sha1pwd, count
 
 
-def count_occurrences(text, tail):
+def occurences_count(text, tail):
     print_function_name()
 
     hashes = (line.split(':') for line in text.splitlines())
@@ -57,7 +57,7 @@ def count_occurrences(text, tail):
     return count
 
 
-def count_occurrences_2(text, tail):
+def occurences_count_2(text, tail):
     print_function_name()
 
     lines = text.splitlines()
@@ -71,7 +71,7 @@ def count_occurrences_2(text, tail):
     return count
 
 
-def count_occurrences_3(text, tail):
+def occurences_count_3(text, tail):
     print_function_name()
     hashes_generator = (line.split(':') for line in text.splitlines())
     hashes = list(hashes_generator)
@@ -85,7 +85,7 @@ def count_occurrences_3(text, tail):
     return count
 
 
-def count_occurrences_4(text, tail):
+def occurences_count_4(text, tail):
     print_function_name()
     hashes = [line.split(':') for line in text.splitlines()]
 
@@ -101,7 +101,7 @@ def count_occurrences_4(text, tail):
 
 
 # JR change to for loops etc as an exercise to understand the two original lines of code
-def count_occurrences_5(text, tail):
+def occurences_count_5(text, tail):
     print_function_name()
 
     lines = text.splitlines()
@@ -120,7 +120,7 @@ def count_occurrences_5(text, tail):
 
 
 # JR change to for loops etc as an exercise to understand the two original lines of code
-def count_occurrences_6(text, tail):
+def occurences_count_6(text, tail):
 
     # hashes = (line.split(':') for line in text.splitlines())
     # count = next((int(count) for t, count in hashes if t == tail), 0)
