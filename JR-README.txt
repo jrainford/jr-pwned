@@ -11,6 +11,9 @@ Python Tutorial: Comprehensions - How they work and why you should be using them
 Python Tutorial for Beginners 4: Lists, Tuples, and Sets
     https://youtu.be/W8KRzm-HUcc
 
+Python Tutorial: Generators - How to use them and the benefits you receive
+    https://youtu.be/bD05uGo_sVI
+
 https://www.troyhunt.com/enhancing-pwned-passwords-privacy-with-padding/
     See pwned.sh
 

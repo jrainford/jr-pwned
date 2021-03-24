@@ -9,6 +9,7 @@ except ModuleNotFoundError:
     print("###  pip install requests  ###")
     raise
 
+
 def print_function_name():
     print("-->", inspect.stack()[1][3])
 
@@ -41,8 +42,9 @@ def lookup_pwned_api(pwd):
     # count = count_occurrences(res.text, tail)
     # count = count_occurrences_2(res.text, tail)
     # count = count_occurrences_3(res.text, tail)
-    count = count_occurrences_4(res.text, tail)
+    # count = count_occurrences_4(res.text, tail)
     # count = count_occurrences_5(res.text, tail)
+    count = count_occurrences_6(res.text, tail)
     return sha1pwd, count
 
 
@@ -50,7 +52,6 @@ def count_occurrences(text, tail):
     print_function_name()
 
     hashes = (line.split(':') for line in text.splitlines())
-    
     count = next((int(count) for t, count in hashes if t == tail), 0)
 
     return count
@@ -104,7 +105,7 @@ def count_occurrences_5(text, tail):
     print_function_name()
 
     lines = text.splitlines()
-    
+
     hashes = []
     for line in lines:
         hashes.append(line.split(':'))
@@ -117,6 +118,27 @@ def count_occurrences_5(text, tail):
             count = c
     return count
 
+
+# JR change to for loops etc as an exercise to understand the two original lines of code
+def count_occurrences_6(text, tail):
+
+    # hashes = (line.split(':') for line in text.splitlines())
+    # count = next((int(count) for t, count in hashes if t == tail), 0)
+
+    print_function_name()
+
+    def hashes():
+        for line in text.splitlines():
+            yield (line.split(':'))
+    
+    def matches():
+        for t, count in hashes():
+            if t == tail:
+                yield count
+
+    # only expecting one result, so only one call to next()
+    count = next(matches(), 0)
+    return count
 
 
 def main(args):
